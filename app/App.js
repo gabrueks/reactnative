@@ -33,7 +33,6 @@ type Props = {};
 
 
 export default class App extends Component<Props> {
-
   constructor(Props){
     super(Props);
     this.state = { text: '' };
@@ -48,13 +47,14 @@ export default class App extends Component<Props> {
       // </View>
       <View style={styles.middle}>
         <TextInput style={styles.input}
-        placeholder="Escreva aqui para traduzir"
+        placeholder="Escreva aqui para traduzir this is ios"
         onChangeText={(text) => this.setState({text})}
         />
         <Text style={styles.middle}>
           { this.state.text.split(' ').map((word) => word && '🍕').join(' ') }
         </Text>
       </View>
+
     );
   }
 }
