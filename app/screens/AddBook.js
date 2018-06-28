@@ -4,14 +4,26 @@ import {
     Text,
     View
 } from 'react-native';
+import Animation from 'lottie-react-native';
+
+import beerAnim from '../assets/beer.json';
 
 export default class AddBook extends Component {
+    
+    componentDidMount() {
+        this.animation.play();
+    }
+
     render() {
         return(
             <View style={this.styles.container}>
-                <Text style={this.styles.title}>
-                    Add book
-                </Text>
+                <Animation
+                   ref={animation => {
+                       this.animation = animation
+                   }}
+                   loop={true}
+                   source={beerAnim}
+                />
             </View>
         );
     }
@@ -21,7 +33,7 @@ export default class AddBook extends Component {
             flex: 1,
             justifyContent: 'center',
             alignItems: 'center',
-            backgroundColor: '#F5FCFF',
+            backgroundColor: 'rgb(70, 50, 104)',
           },
           title: {
             fontSize: 20,

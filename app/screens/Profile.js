@@ -16,17 +16,17 @@ export default class Profile extends Component {
         );
     }
 
-    styles = StyleSheet.create({
-        container: {
-            flex: 1,
-            justifyContent: 'center',
-            alignItems: 'center',
-            backgroundColor: '#F5FCFF',
-          },
-          title: {
-            fontSize: 20,
-            textAlign: 'center',
-            margin: 10,
-          }
+styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#F5FCFF',
+        },
+        title: {
+        fontSize: 20,
+        textAlign: 'center',
+        margin: 10,
+        }
     });
 }

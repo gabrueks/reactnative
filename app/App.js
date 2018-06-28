@@ -1,37 +1,69 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
 import React, { Component } from 'react';
-import {
-  Platform,
-  StyleSheet,
-  Text,
-  View,
-  AppRegistry,
-  TextInput
-} from 'react-native';
+import { createBottomTabNavigator, View } from 'react-navigation';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
-import { createRootNavigator } from './router';
+import Bookcase from './screens/Bookcase';
+import AddBook from './screens/AddBook';
+import Profile from './screens/Profile';
+import Lists from './screens/Lists';
+import Explore from './screens/Explore';
 
-// const instructions = Platform.select({
-//   ios: 'Press Cmd+R to reload,\n' +
-//     'Cmd+D or shake for dev menu',
-//   android: 'Double tap R on your keyboard to reload,\n' +
-//     'Shake or press menu button for dev menu',
-// });
+export default createBottomTabNavigator({
+  BookcasePage: Bookcase,
+  AddBookPage: AddBook,
+  ProfilePage: Profile,
+  ListsPage: Lists,
+  ExplorePage: Explore
+},
+{
+  navigationOptions: ({ navigation }) => ({
+    tabBarIcon: ({ focused, tintColor }) => {
+      const { routeName } = navigation.state;
+      let iconName;
+      switch (routeName) {
+        case 'BookcasePage':
+          iconName = `ios-book${focused ? '' :  '-outline'}`;          
+          break;
+        case 'AddBookPage':
+          iconName = `ios-add-circle${focused ? '' : '-outline'}`;
+          break;
+        case 'ProfilePage':
+          iconName = `ios-person${focused ? '' : '-outline'}`;
+          break;
+        case 'ListsPage':
+          iconName = `ios-list${focused ? '' : '-outline'}`;
+          break;
+        case 'ExplorePage':
+          iconName = `ios-ionic${focused ? '' : '-outline'}`;
+          break;
+        default:
+          break;
+      }
+      return <Ionicons name={iconName} size={25} color={tintColor} />;
+    }
+  }),
+  tabBarOptions: {
+    activeTintColor: 'tomato',
+    inactiveTintColor: 'gray',
+  },
+});
 
-
-export default class App extends Component {
-
-  render() {
-    return (
-      createRootNavigator()
-    );
-  }
-}
+// export default class App extends Component {
+  // createBottomTabNavigator({
+  //   BookcasePage: Bookcase,
+  //   AddBookPage: AddBook,
+  //   ProfilePage: Profile,
+  //   ListsPage: Lists,
+  //   ExplorePage: Explore
+  // })
+  // render() {
+  //   return (
+  //     <View>
+  //       <createBottomTabNavigation></createBottomTabNavigation>
+  //     </View>
+  //   );
+  // }
+// }
 
 // const styles = StyleSheet.create({
 //   container: {
